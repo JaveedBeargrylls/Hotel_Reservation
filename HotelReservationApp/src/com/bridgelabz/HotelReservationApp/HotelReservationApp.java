@@ -1,5 +1,6 @@
 package com.bridgelabz.HotelReservationApp;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -37,6 +38,28 @@ public class HotelReservationApp {
 		//System.err.println(range); // err for accept output data
 		long daterange = 1 + range / (1000 * 60 * 60 * 24);
 		
+		DateFormat day = new SimpleDateFormat("EE");
+		String startDay = day.format(startDate);
+		String endDay = day.format(startDate);
+		long weekends = 0;
+		if (startDay.equalsIgnoreCase("sat") || startDay.equalsIgnoreCase("sun")) 
+		{
+			weekends++;
+		}
+		if (endDay.equalsIgnoreCase("sat") || endDay.equalsIgnoreCase("sun"))
+		{
+			weekends++;
+		}
+		
+		long weekdays = daterange - weekends;
+		
+		for(Hotels hotel : obj.getHotelList()) {
+			long totalRate = weekdays * hotel.getWeekDayRate() + weekends * hotel.getWeekEndRate();
+			hotel.setTotalRate(totalRate);
+		}
+		
+		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getTotalRate)).findFirst().orElse(null);
+
 		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getWeekDayRate)).findFirst().orElse(null);
 		
 		long totalRate = daterange * cheapestHotel.getWeekDayRate();

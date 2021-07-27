@@ -59,7 +59,12 @@ public class HotelReservationApp {
 		}
 		
 		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getTotalRate)).findFirst().orElse(null);
+
+		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getWeekDayRate)).findFirst().orElse(null);
 		
+		long totalRate = daterange * cheapestHotel.getWeekDayRate();
+		cheapestHotel.setTotalRate(totalRate);
+
 		return cheapestHotel;
 		
 	}

@@ -11,9 +11,9 @@ public class HotelReservationApp {
 	static HotelReservation obj = new HotelReservation();
 	
 	public static void addHotels() {	
-		Hotels hotel1 = new Hotels("LakeWood",110);
-		Hotels hotel2 = new Hotels("BridgeWood",160);
-		Hotels hotel3 = new Hotels("RidgeWood",220);
+		Hotels hotel1 = new Hotels("LakeWood",110,90);
+		Hotels hotel2 = new Hotels("BridgeWood",160,60);
+		Hotels hotel3 = new Hotels("RidgeWood",220,150);
 		
 		
 		obj.addHotelsToList(hotel1);
@@ -37,9 +37,9 @@ public class HotelReservationApp {
 		//System.err.println(range); // err for accept output data
 		long daterange = 1 + range / (1000 * 60 * 60 * 24);
 		
-		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getRate)).findFirst().orElse(null);
+		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getWeekDayRate)).findFirst().orElse(null);
 		
-		long totalRate = daterange * cheapestHotel.getRate();
+		long totalRate = daterange * cheapestHotel.getWeekDayRate();
 		cheapestHotel.setTotalRate(totalRate);
 
 		return cheapestHotel;

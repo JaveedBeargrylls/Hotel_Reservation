@@ -4,7 +4,9 @@ package com.bridgelabz.HotelReservationApp;
 public class Hotels {
 	private String hotelName;
 	private long totalRate;
-	private int Rate;
+	private int weekDayRate;
+	private int weekEndRate;
+	
 	
 	public long getTotalRate() {
 		return totalRate;
@@ -12,10 +14,11 @@ public class Hotels {
 	public void setTotalRate(long totalRate) {
 		this.totalRate = totalRate;
 	}
-	public Hotels(String hotelName,int Rate) {
+	public Hotels(String hotelName,int weekDayRate, int weekEndRate) {
 		super();
 		this.hotelName = hotelName;
-		this.Rate = Rate;
+		this.weekDayRate = weekDayRate;
+		this.weekEndRate = weekEndRate;
 	}
 	public String getHotelName() {
 		return hotelName;
@@ -23,16 +26,23 @@ public class Hotels {
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
-	public void setRate(int Rate) {
-		this.Rate = Rate;
+	public int getWeekDayRate() {
+		return weekDayRate;
 	}
-	public int getRate() {
-		return Rate;
+	public void setWeekDayRate(int weekDayRate) {
+		this.weekDayRate = weekDayRate;
 	}
+	public int getWeekEndRate() {
+		return weekEndRate;
+	}
+	public void setWeekEndRate(int weekEndRate) {
+		this.weekEndRate = weekEndRate;
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "Hotel [hotelName = "+hotelName+" Rate = "+Rate+"]";
+		return "Hotel [hotelName = "+hotelName+" WeekDays Rate = "+weekDayRate+" WeekEnds Rate = "+weekEndRate+"]";
 	}
 
 }

@@ -3,11 +3,19 @@ package com.bridgelabz.HotelReservationApp;
 
 public class Hotels {
 	private String hotelName;
-	private int rate;
+	private long totalRate;
+	private int Rate;
 	
-	public Hotels(String hotelName, int rate) {
+	public long getTotalRate() {
+		return totalRate;
+	}
+	public void setTotalRate(long totalRate) {
+		this.totalRate = totalRate;
+	}
+	public Hotels(String hotelName,int Rate) {
+		super();
 		this.hotelName = hotelName;
-		this.rate = rate;
+		this.Rate = Rate;
 	}
 	public String getHotelName() {
 		return hotelName;
@@ -15,16 +23,16 @@ public class Hotels {
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
-	public int getRate() {
-		return rate;
+	public void setRate(int Rate) {
+		this.Rate = Rate;
 	}
-	public void setRage(int rate) {
-		this.rate = rate;
+	public int getRate() {
+		return Rate;
 	}
 	
 	@Override
 	public String toString() {
-		return "Hotel [hotelName = "+hotelName+" Rate = "+rate+"]";
+		return "Hotel [hotelName = "+hotelName+" Rate = "+Rate+"]";
 	}
 
 }

@@ -12,10 +12,10 @@ public class HotelReservationApp {
 	static HotelReservation obj = new HotelReservation();
 	
 	public static void addHotels() {	
-		Hotels hotel1 = new Hotels("LakeWood",110,90);
-		Hotels hotel2 = new Hotels("BridgeWood",160,60);
-		Hotels hotel3 = new Hotels("RidgeWood",220,150);
-		
+
+		Hotels hotel1 = new Hotels("LakeWood",110,90,3);
+		Hotels hotel2 = new Hotels("BridgeWood",160,60,4);
+		Hotels hotel3 = new Hotels("RidgeWood",220,150,5);
 		
 		obj.addHotelsToList(hotel1);
 		obj.addHotelsToList(hotel2);
@@ -37,6 +37,9 @@ public class HotelReservationApp {
 		long range = endDate.getTime() - startDate.getTime();
 		//System.err.println(range); // err for accept output data
 		long daterange = 1 + range / (1000 * 60 * 60 * 24);
+		
+
+		//System.out.println("\n"+daterange+"\n");
 		
 		DateFormat day = new SimpleDateFormat("EE");
 		String startDay = day.format(startDate);
@@ -60,8 +63,6 @@ public class HotelReservationApp {
 		
 		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getTotalRate)).findFirst().orElse(null);
 
-		Hotels cheapestHotel = obj.getHotelList().stream().sorted(Comparator.comparing(Hotels::getWeekDayRate)).findFirst().orElse(null);
-		
 		long totalRate = daterange * cheapestHotel.getWeekDayRate();
 		cheapestHotel.setTotalRate(totalRate);
 

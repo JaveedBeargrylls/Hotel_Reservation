@@ -8,19 +8,20 @@ public class Hotels {
 	private int weekEndRate;
 	private int Rate;
 	
-	
 	public long getTotalRate() {
 		return totalRate;
 	}
 	public void setTotalRate(long totalRate) {
 		this.totalRate = totalRate;
 	}
+
 	public Hotels(String hotelName,int weekDayRate, int weekEndRate, int Rate) {
 		super();
 		this.hotelName = hotelName;
 		this.weekDayRate = weekDayRate;
 		this.weekEndRate = weekEndRate;
 		this.Rate = Rate;
+
 	}
 	public String getHotelName() {
 		return hotelName;
@@ -42,6 +43,12 @@ public class Hotels {
 	}
 	public void setRate(int Rate) {
 		this.Rate = Rate;
+	}
+	public int getWeekEndRate() {
+		return weekEndRate;
+	}
+	public void setWeekEndRate(int weekEndRate) {
+		this.weekEndRate = weekEndRate;
 	}
 	public int getRate() {
 		return Rate;
